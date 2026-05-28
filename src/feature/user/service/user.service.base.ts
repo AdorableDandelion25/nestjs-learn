@@ -1,5 +1,4 @@
-import { User } from '../entity/user';
+import { User } from '../entity/user.model';
+import { BaseService } from 'src/base/service/service.base';
 
-export interface UserService {
-  getAll(): Promise<User[]>;
-}
+export abstract class UserService extends BaseService<User> {}

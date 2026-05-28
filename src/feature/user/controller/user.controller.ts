@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
-import type { UserService } from '../service/user.service.base';
-import { User } from '../entity/user';
+import { UserService } from '../service/user.service.base';
+import { User } from '../entity/user.model';
 
 @Controller('users')
 export class UserController {
@@ -10,6 +10,6 @@ export class UserController {
 
   @Get()
   async findAll(): Promise<User[]> {
-    return this.service.getAll();
+    return this.service.findAll();
   }
 }
