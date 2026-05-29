@@ -7,7 +7,7 @@ import {
 } from 'sequelize-typescript';
 import { BaseEntity } from 'src/base/entity/entity.base';
 
-@Table({ tableName: 'users' })
+@Table({ tableName: 'users', defaultScope: { attributes: { exclude: ['password'] } } })
 export class User extends BaseEntity<User> {
   @PrimaryKey
   @Column({ type: DataType.UUID, defaultValue: DataType.UUIDV4 })

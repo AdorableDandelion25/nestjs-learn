@@ -1,6 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { UserService } from '../service/user.service.base';
-import { User } from '../entity/user.model';
+import { UserResponseDto } from '../dto/user-response.dto';
 
 @Controller('users')
 export class UserController {
@@ -9,7 +9,8 @@ export class UserController {
   ) {}
 
   @Get()
-  async findAll(): Promise<User[]> {
-    return this.service.findAll();
+  async findAll(): Promise<UserResponseDto[]> {
+    const users = await this.service.findAll();
+    return users.map(UserResponseDto.from);
   }
 }
